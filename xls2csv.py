@@ -11,7 +11,7 @@ def xls2csv(extraction_file, ligne_donnees = 1):
      * il écrit les valeurs dans un fichier csv
      et enregistre le fichier csv en ajoutant l'extension .csv au nom du fichier dans le répertoire courant
     '''
-    ligne_donnees = ligne_donnees - 1 #on commence la numérotation à 0
+    ligne_donnees = ligne_donnees - 1 # la numérotation débute à 0
     extraction_excel = xlrd.open_workbook(extraction_file)
     feuille_xls_active = extraction_excel.sheet_by_index(0)
     fichier_csv = str(extraction_file) + '.csv'
@@ -21,9 +21,8 @@ def xls2csv(extraction_file, ligne_donnees = 1):
             nouvelle_ligne = []
             for dummy_colonne in range(feuille_xls_active.ncols):
                 cellule = feuille_xls_active.cell(dummy_ligne, dummy_colonne).value
-                #cellule = str(feuille_xls_active.cell(dummy_ligne, dummy_colonne).value).encode('utf8')
                 nouvelle_ligne.append(cellule)
             csv_writer.writerow(nouvelle_ligne)
 
 extraction_file = sys.argv[1]
-xls2csv(extraction_file, ligne_donnees = 2)
+xls2csv(extraction_file, ligne_donnees = 1)
