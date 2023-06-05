@@ -21,7 +21,7 @@ def xls2csv(extraction_file, ligne_donnees = 1):
             nouvelle_ligne = []
             for dummy_colonne in range(feuille_xls_active.ncols):
                 cellule = feuille_xls_active.cell(dummy_ligne, dummy_colonne).value
-                nouvelle_ligne.append(cellule)
+                nouvelle_ligne.append(cellule.replace('\n',' _ '))
             csv_writer.writerow(nouvelle_ligne)
 
 extraction_file = sys.argv[1]
